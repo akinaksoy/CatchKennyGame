@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     var score = 0
     var timer = Timer()
     var counter = 0
+    var characterArray = [UIImageView]()
+    var hideTimer = Timer()
     
     //MARK: Views
     @IBOutlet weak var TimeLabel: UILabel!
@@ -65,13 +67,15 @@ class ViewController: UIViewController {
         kenny8.addGestureRecognizer(recognizer8)
         kenny9.addGestureRecognizer(recognizer9)
         
+        characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9]
+        
         //MARK: Timer
         counter = 10
         TimeLabel.text = "\(counter)"
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(countDown) , userInfo: nil, repeats: true)
-        
-        
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(hideCharacter), userInfo: nil, repeats: true)
+        hideCharacter()
     }
 
     
@@ -89,9 +93,13 @@ class ViewController: UIViewController {
     @objc func countDown(){
         counter -= 1
         TimeLabel.text = String(counter)
+        for character in characterArray {
+            character.isHidden = true
+        }
         
         if counter == 0{
             timer.invalidate()
+            hideTimer.invalidate()
             
             let alert = UIAlertController(title: "Time's up. Your score is = \(score)", message: "Do you want to play again ? ", preferredStyle: UIAlertController.Style.alert)
             let okButtonAlert = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
@@ -105,6 +113,15 @@ class ViewController: UIViewController {
         
         
     }
+    
+    @objc func hideCharacter(){
+        for character in characterArray {
+            character.isHidden = true
+        }
+        let random = (Int)(arc4random_uniform(UInt32(characterArray.count-1)))
+        characterArray[random].isHidden = false
+    }
+    
     
 }
 
