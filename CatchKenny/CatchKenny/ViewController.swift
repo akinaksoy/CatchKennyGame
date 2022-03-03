@@ -79,16 +79,34 @@ class ViewController: UIViewController {
         kenny9.addGestureRecognizer(recognizer9)
         
         characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9]
+        hideAllCharacters()
+        characterArray[1].isHidden = false
+       
         
-        //MARK: Timer
-        counter = 10
-        TimeLabel.text = "\(counter)"
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(countDown) , userInfo: nil, repeats: true)
-        hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideCharacter), userInfo: nil, repeats: true)
-        hideCharacter()
+        
+        
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        let startGameAlert = UIAlertController(title: "Start Game", message: "Do you want start to game ?", preferredStyle: UIAlertController.Style.alert)
+        let StartGameButton = UIAlertAction(title: "Start Game", style: UIAlertAction.Style.default) { UIAlertAction in
+            //MARK: Timer
+            self.counter = 5
+            self.TimeLabel.text = "\(self.counter)"
+            
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(self.countDown) , userInfo: nil, repeats: true)
+            self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideCharacter), userInfo: nil, repeats: true)
+            self.hideCharacter()
+        }
+        let quitGameButton = UIAlertAction(title: "Quit Game", style: UIAlertAction.Style.cancel) { UIAlertAction in
+            exit(0)
+            
+        }
+        startGameAlert.addAction(StartGameButton)
+        startGameAlert.addAction(quitGameButton)
+        self.present(startGameAlert, animated: true, completion: nil)
+    }
     
     func scoreLabelUpdate(score : Int){
         ScoreLabel.text = "Score : \(score)"
@@ -112,9 +130,7 @@ class ViewController: UIViewController {
         if counter == 0{
             timer.invalidate()
             hideTimer.invalidate()
-            for character in characterArray {
-                character.isHidden = true
-            }
+            hideAllCharacters()
             if self.score > self.highScore {
                 self.highScore = self.score
                 HighscoreLabel.text = "Highscore : \(self.highScore)"
@@ -127,7 +143,7 @@ class ViewController: UIViewController {
             let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
                 self.score = 0
                 self.scoreLabelUpdate(score: self.score)
-                self.counter = 10
+                self.counter = 5
                 self.TimeLabel.text = String(self.counter)
                 self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(self.countDown) , userInfo: nil, repeats: true)
                 self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideCharacter), userInfo: nil, repeats: true)
@@ -141,13 +157,15 @@ class ViewController: UIViewController {
     }
     
     @objc func hideCharacter(){
-        for character in characterArray {
-            character.isHidden = true
-        }
+       hideAllCharacters()
         let random = (Int)(arc4random_uniform(UInt32(characterArray.count-1)))
         characterArray[random].isHidden = false
     }
     
-    
+    func hideAllCharacters(){
+        for character in characterArray {
+            character.isHidden = true
+        }
+    }
 }
 
