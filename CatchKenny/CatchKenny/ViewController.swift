@@ -38,6 +38,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var Eric7: UIImageView!
     @IBOutlet weak var Eric8: UIImageView!
     @IBOutlet weak var Eric9: UIImageView!
+    @IBOutlet weak var Stan1: UIImageView!
+    @IBOutlet weak var Stan2: UIImageView!
+    @IBOutlet weak var Stan3: UIImageView!
+    @IBOutlet weak var Stan4: UIImageView!
+    @IBOutlet weak var Stan5: UIImageView!
+    @IBOutlet weak var Stan6: UIImageView!
+    @IBOutlet weak var Stan7: UIImageView!
+    @IBOutlet weak var Stan8: UIImageView!
+    @IBOutlet weak var Stan9: UIImageView!
     
     
     
@@ -79,6 +88,15 @@ class ViewController: UIViewController {
         Eric7.isUserInteractionEnabled = true
         Eric8.isUserInteractionEnabled = true
         Eric9.isUserInteractionEnabled = true
+        Stan1.isUserInteractionEnabled = true
+        Stan2.isUserInteractionEnabled = true
+        Stan3.isUserInteractionEnabled = true
+        Stan4.isUserInteractionEnabled = true
+        Stan5.isUserInteractionEnabled = true
+        Stan6.isUserInteractionEnabled = true
+        Stan7.isUserInteractionEnabled = true
+        Stan8.isUserInteractionEnabled = true
+        Stan9.isUserInteractionEnabled = true
         
         
         
@@ -101,6 +119,15 @@ class ViewController: UIViewController {
         let recognizer16 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
         let recognizer17 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
         let recognizer18 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer19 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer20 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer21 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer22 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer23 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer24 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer25 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer26 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
+        let recognizer27 = UITapGestureRecognizer(target: self, action: #selector(increaseTime))
         
         kenny1.addGestureRecognizer(recognizer1)
         kenny2.addGestureRecognizer(recognizer2)
@@ -120,10 +147,21 @@ class ViewController: UIViewController {
         Eric7.addGestureRecognizer(recognizer16)
         Eric8.addGestureRecognizer(recognizer17)
         Eric9.addGestureRecognizer(recognizer18)
-        characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9,Eric1,Eric2,Eric3,Eric4,Eric5,Eric6,Eric7,Eric8,Eric9]
+        Stan1.addGestureRecognizer(recognizer19)
+        Stan2.addGestureRecognizer(recognizer20)
+        Stan3.addGestureRecognizer(recognizer21)
+        Stan4.addGestureRecognizer(recognizer22)
+        Stan5.addGestureRecognizer(recognizer23)
+        Stan6.addGestureRecognizer(recognizer24)
+        Stan7.addGestureRecognizer(recognizer25)
+        Stan8.addGestureRecognizer(recognizer26)
+        Stan9.addGestureRecognizer(recognizer27)
+        
+        characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9,Eric1,Eric2,Eric3,Eric4,Eric5,Eric6,Eric7,Eric8,Eric9,Stan1,Stan2,Stan3,Stan4,Stan5,Stan6,Stan7,Stan8,Stan9]
         hideAllCharacters()
         characterArray[1].isHidden = false
-        characterArray[9].isHidden = false 
+        characterArray[9].isHidden = false
+        characterArray[20].isHidden = false
        
         
         
@@ -164,7 +202,10 @@ class ViewController: UIViewController {
         score -= 1
         scoreLabelUpdate(score: score)
     }
-    
+    @objc func increaseTime(){
+        counter += 2
+        TimeLabel.text = "\(counter)"
+    }
     
     
     // countdown control
@@ -185,7 +226,9 @@ class ViewController: UIViewController {
             
             //Alert
             let alert = UIAlertController(title: "Time's up. Your score is = \(score)", message: "Do you want to play again ? ", preferredStyle: UIAlertController.Style.alert)
-            let okButtonAlert = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            let okButtonAlert = UIAlertAction(title: "Quit Game", style: UIAlertAction.Style.cancel) { UIAlertAction in
+                exit(0)
+            }
             let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
                 self.score = 0
                 self.scoreLabelUpdate(score: self.score)

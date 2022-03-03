@@ -13,6 +13,7 @@
 		1F3E76F527D1482B0025FB15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E76F327D1482B0025FB15 /* Main.storyboard */; };
 		1F3E76F727D1482C0025FB15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E76F627D1482C0025FB15 /* Assets.xcassets */; };
 		1F3E76FA27D1482C0025FB15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E76F827D1482C0025FB15 /* LaunchScreen.storyboard */; };
+		1F3E770227D15FCB0025FB15 /* ProjectImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E770127D15FCB0025FB15 /* ProjectImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1F3E76F627D1482C0025FB15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F3E76F927D1482C0025FB15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F3E76FB27D1482C0025FB15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F3E770127D15FCB0025FB15 /* ProjectImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProjectImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		1F3E76EC27D1482B0025FB15 /* CatchKenny */ = {
 			isa = PBXGroup;
 			children = (
+				1F3E770127D15FCB0025FB15 /* ProjectImage.png */,
 				1F3E76ED27D1482B0025FB15 /* AppDelegate.swift */,
 				1F3E76EF27D1482B0025FB15 /* SceneDelegate.swift */,
 				1F3E76F127D1482B0025FB15 /* ViewController.swift */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F3E76FA27D1482C0025FB15 /* LaunchScreen.storyboard in Resources */,
+				1F3E770227D15FCB0025FB15 /* ProjectImage.png in Resources */,
 				1F3E76F727D1482C0025FB15 /* Assets.xcassets in Resources */,
 				1F3E76F527D1482B0025FB15 /* Main.storyboard in Resources */,
 			);
