@@ -29,6 +29,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var kenny7: UIImageView!
     @IBOutlet weak var kenny8: UIImageView!
     @IBOutlet weak var kenny9: UIImageView!
+    @IBOutlet weak var Eric1: UIImageView!
+    @IBOutlet weak var Eric2: UIImageView!
+    @IBOutlet weak var Eric3: UIImageView!
+    @IBOutlet weak var Eric4: UIImageView!
+    @IBOutlet weak var Eric5: UIImageView!
+    @IBOutlet weak var Eric6: UIImageView!
+    @IBOutlet weak var Eric7: UIImageView!
+    @IBOutlet weak var Eric8: UIImageView!
+    @IBOutlet weak var Eric9: UIImageView!
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +70,17 @@ class ViewController: UIViewController {
         kenny7.isUserInteractionEnabled = true
         kenny8.isUserInteractionEnabled = true
         kenny9.isUserInteractionEnabled = true
+        Eric1.isUserInteractionEnabled = true
+        Eric2.isUserInteractionEnabled = true
+        Eric3.isUserInteractionEnabled = true
+        Eric4.isUserInteractionEnabled = true
+        Eric5.isUserInteractionEnabled = true
+        Eric6.isUserInteractionEnabled = true
+        Eric7.isUserInteractionEnabled = true
+        Eric8.isUserInteractionEnabled = true
+        Eric9.isUserInteractionEnabled = true
+        
+        
         
         //MARK: Recognizers
         let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
@@ -67,6 +92,15 @@ class ViewController: UIViewController {
         let recognizer7 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer8 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer9 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer10 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer11 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer12 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer13 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer14 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer15 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer16 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer17 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
+        let recognizer18 = UITapGestureRecognizer(target: self, action: #selector(decraseScore))
         
         kenny1.addGestureRecognizer(recognizer1)
         kenny2.addGestureRecognizer(recognizer2)
@@ -77,10 +111,19 @@ class ViewController: UIViewController {
         kenny7.addGestureRecognizer(recognizer7)
         kenny8.addGestureRecognizer(recognizer8)
         kenny9.addGestureRecognizer(recognizer9)
-        
-        characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9]
+        Eric1.addGestureRecognizer(recognizer10)
+        Eric2.addGestureRecognizer(recognizer11)
+        Eric3.addGestureRecognizer(recognizer12)
+        Eric4.addGestureRecognizer(recognizer13)
+        Eric5.addGestureRecognizer(recognizer14)
+        Eric6.addGestureRecognizer(recognizer15)
+        Eric7.addGestureRecognizer(recognizer16)
+        Eric8.addGestureRecognizer(recognizer17)
+        Eric9.addGestureRecognizer(recognizer18)
+        characterArray = [kenny1,kenny2,kenny3,kenny4,kenny5,kenny6,kenny7,kenny8,kenny9,Eric1,Eric2,Eric3,Eric4,Eric5,Eric6,Eric7,Eric8,Eric9]
         hideAllCharacters()
         characterArray[1].isHidden = false
+        characterArray[9].isHidden = false 
        
         
         
@@ -117,7 +160,10 @@ class ViewController: UIViewController {
         score += 1
         scoreLabelUpdate(score: score)
     }
-    
+    @objc func decraseScore(){
+        score -= 1
+        scoreLabelUpdate(score: score)
+    }
     
     
     
