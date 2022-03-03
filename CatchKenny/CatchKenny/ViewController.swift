@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
+    //MARK: Variables
     var score = 0
+    var timer = Timer()
+    var counter = 0
     
+    //MARK: Views
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var HighscoreLabel: UILabel!
@@ -30,6 +33,7 @@ class ViewController: UIViewController {
         
         scoreLabelUpdate(score: score)
         
+        //MARK: User Interaction
         kenny1.isUserInteractionEnabled = true
         kenny2.isUserInteractionEnabled = true
         kenny3.isUserInteractionEnabled = true
@@ -40,7 +44,7 @@ class ViewController: UIViewController {
         kenny8.isUserInteractionEnabled = true
         kenny9.isUserInteractionEnabled = true
         
-        
+        //MARK: Recognizers
         let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         let recognizer3 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
@@ -60,6 +64,14 @@ class ViewController: UIViewController {
         kenny7.addGestureRecognizer(recognizer7)
         kenny8.addGestureRecognizer(recognizer8)
         kenny9.addGestureRecognizer(recognizer9)
+        
+        //MARK: Timer
+        counter = 10
+        TimeLabel.text = "\(counter)"
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(countDown) , userInfo: nil, repeats: true)
+        
+        
     }
 
     
@@ -73,6 +85,26 @@ class ViewController: UIViewController {
         scoreLabelUpdate(score: score)
     }
     
+    // countdown control
+    @objc func countDown(){
+        counter -= 1
+        TimeLabel.text = String(counter)
+        
+        if counter == 0{
+            timer.invalidate()
+            
+            let alert = UIAlertController(title: "Time's up. Your score is = \(score)", message: "Do you want to play again ? ", preferredStyle: UIAlertController.Style.alert)
+            let okButtonAlert = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { UIAlertAction in
+                
+            }
+            alert.addAction(okButtonAlert)
+            alert.addAction(replayButton)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
     
 }
 
